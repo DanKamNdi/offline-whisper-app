@@ -7,8 +7,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Electron](https://img.shields.io/badge/Electron-28-blue.svg)](https://www.electronjs.org/)
 [![React](https://img.shields.io/badge/React-18-blue.svg)](https://reactjs.org/)
-[![GitHub issues](https://img.shields.io/github/issues/OWNER/offline-whisper)](https://github.com/OWNER/offline-whisper/issues)
-[![GitHub stars](https://img.shields.io/github/stars/OWNER/offline-whisper?style=social)](https://github.com/OWNER/offline-whisper/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/DanKamNdi/offline-whisper-app)](https://github.com/DanKamNdi/offline-whisper-app/issues)
+[![GitHub stars](https://img.shields.io/github/stars/DanKamNdi/offline-whisper-app?style=social)](https://github.com/DanKamNdi/offline-whisper-app/stargazers)
 
 [Features](#-features) • [Download](#-download) • [Getting Started](#-getting-started) • [Documentation](#-documentation) • [Contributing](#-contributing)
 
@@ -29,25 +29,23 @@
 - **📝 Easy Export** - Copy transcripts to clipboard with one click
 - **🔧 Customizable** - Choose your own model storage location
 
-## 📸 Screenshots
-
-> **Note**: Add screenshots here before publishing
-
-```
-[Screenshot 1: Main interface]
-[Screenshot 2: Model picker modal]
-[Screenshot 3: Transcription in progress]
-```
-
 ## 📥 Download
 
 ### Latest Release
 
 Download the latest version for your platform:
 
-- **Windows**: [Offline Whisper Setup.exe](https://github.com/OWNER/offline-whisper/releases)
-- **macOS**: [Offline Whisper.dmg](https://github.com/OWNER/offline-whisper/releases)
-- **Linux**: [Offline Whisper.AppImage](https://github.com/OWNER/offline-whisper/releases)
+- **Windows**: [Offline Whisper Setup.exe](https://github.com/DanKamNdi/offline-whisper-app/releases)
+- **macOS**: [Offline Whisper.dmg](https://github.com/DanKamNdi/offline-whisper-app/releases)
+- **Linux**: [Offline Whisper.AppImage](https://github.com/DanKamNdi/offline-whisper-app/releases)
+
+### Current Releases
+
+| Version | Date       | Platforms             | Notes |
+|---------|------------|-----------------------|-------|
+| v0.1.0  | 2025-01-XX | Windows / macOS / Linux | Initial public release with local recording, offline transcription, model manager, and history. |
+
+Grab installers from the [Releases page](https://github.com/DanKamNdi/offline-whisper-app/releases). New builds will be added to this table as they ship.
 
 ### System Requirements
 
@@ -108,8 +106,8 @@ The app automatically recommends models based on your hardware:
 
 ```bash
 # Clone the repository
-git clone https://github.com/OWNER/offline-whisper.git
-cd offline-whisper
+git clone https://github.com/DanKamNdi/offline-whisper-app.git
+cd offline-whisper-app
 
 # Install dependencies
 npm install
@@ -182,10 +180,10 @@ See [ARCHITECTURE.md](ARCHITECTURE.md) for detailed technical documentation.
 
 We welcome contributions! Here's how you can help:
 
-- 🐛 **Report bugs** - [Open an issue](https://github.com/OWNER/offline-whisper/issues/new?template=bug_report.yml)
-- 💡 **Suggest features** - [Request a feature](https://github.com/OWNER/offline-whisper/issues/new?template=feature_request.yml)
+- 🐛 **Report bugs** - [Open an issue](https://github.com/DanKamNdi/offline-whisper-app/issues/new?template=bug_report.yml)
+- 💡 **Suggest features** - [Request a feature](https://github.com/DanKamNdi/offline-whisper-app/issues/new?template=feature_request.yml)
 - 📝 **Improve docs** - Submit PRs for documentation
-- 💻 **Write code** - Check [good first issues](https://github.com/OWNER/offline-whisper/labels/good%20first%20issue)
+- 💻 **Write code** - Check [good first issues](https://github.com/DanKamNdi/offline-whisper-app/labels/good%20first%20issue)
 - 🌍 **Translate** - Help localize the app (coming soon)
 
 Read our [Contributing Guide](CONTRIBUTING.md) to get started.
@@ -226,12 +224,12 @@ The only network requests are:
 
 If you find this project useful, please consider giving it a star!
 
-[![Star History Chart](https://api.star-history.com/svg?repos=OWNER/offline-whisper&type=Date)](https://star-history.com/#OWNER/offline-whisper&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=DanKamNdi/offline-whisper-app&type=Date)](https://star-history.com/#DanKamNdi/offline-whisper-app&Date)
 
 ## 📬 Contact
 
-- **Issues**: [GitHub Issues](https://github.com/OWNER/offline-whisper/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/OWNER/offline-whisper/discussions)
+- **Issues**: [GitHub Issues](https://github.com/DanKamNdi/offline-whisper-app/issues)
+- **Discussions**: [GitHub Discussions](https://github.com/DanKamNdi/offline-whisper-app/discussions)
 - **Email**: [your-email@example.com]
 
 ---
