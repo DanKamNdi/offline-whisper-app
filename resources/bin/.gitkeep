@@ -1,0 +1,3 @@
+# This directory will contain whisper.cpp binaries downloaded at runtime
+# The binaries are platform-specific and downloaded on first app launch
+

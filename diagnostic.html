@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whisper App Diagnostic</title>
+    <style>
+        body {
+            font-family: monospace;
+            padding: 20px;
+            background: #1e1e1e;
+            color: #d4d4d4;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            background: #252526;
+            border-radius: 5px;
+        }
+        .error { color: #f48771; }
+        .success { color: #89d185; }
+        .warning { color: #dcdcaa; }
+        pre { 
+            background: #1e1e1e; 
+            padding: 10px; 
+            overflow-x: auto;
+            border-radius: 3px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            background: #0e639c;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+        button:hover { background: #1177bb; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Offline Whisper Diagnostic</h1>
+    
+    <div class="section">
+        <h2>Step 1: Check Console</h2>
+        <p>Open DevTools (F12 or Ctrl+Shift+I) and check the Console tab for errors.</p>
+        <button onclick="window.location.href='http://localhost:5173'">Open Main App</button>
+    </div>
+
+    <div class="section">
+        <h2>Step 2: Test Audio Recording</h2>
+        <button onclick="testMediaRecorder()">Test MediaRecorder</button>
+        <button onclick="testAudioContext()">Test AudioContext</button>
+        <pre id="test-result">Click a button to test...</pre>
+    </div>
+
+    <div class="section">
+        <h2>Step 3: Check API Bridge</h2>
+        <button onclick="checkAPI()">Check window.api</button>
+        <pre id="api-result">Click to check...</pre>
+    </div>
+
+    <div class="section">
+        <h2>Step 4: Live Logs</h2>
+        <button onclick="clearLogs()">Clear Logs</button>
+        <pre id="live-logs" style="max-height: 300px; overflow-y: auto;">Logs will appear here...</pre>
+    </div>
+
+    <script>
+        const logEl = document.getElementById('live-logs');
+        const testResultEl = document.getElementById('test-result');
+        const apiResultEl = document.getElementById('api-result');
+
+        // Capture all console logs
+        const originalLog = console.log;
+        const originalError = console.error;
+        const originalWarn = console.warn;
+
+        function addLog(type, ...args) {
+            const timestamp = new Date().toISOString().split('T')[1].split('.')[0];
+            const msg = args.map(a => typeof a === 'object' ? JSON.stringify(a, null, 2) : a).join(' ');
+            logEl.textContent += `[${timestamp}] [${type}] ${msg}\n`;
+            logEl.scrollTop = logEl.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addLog('LOG', ...args);
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addLog('ERROR', ...args);
+        };
+
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            addLog('WARN', ...args);
+        };
+
+        window.addEventListener('error', (event) => {
+            addLog('ERROR', 'Uncaught error:', event.error?.message || event.message);
+        });
+
+        window.addEventListener('unhandledrejection', (event) => {
+            addLog('ERROR', 'Unhandled promise rejection:', event.reason);
+        });
+
+        function clearLogs() {
+            logEl.textContent = 'Logs cleared.\n';
+        }
+
+        async function testMediaRecorder() {
+            testResultEl.textContent = 'Testing MediaRecorder...';
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                
+                const mimeTypes = [
+                    'audio/webm;codecs=opus',
+                    'audio/webm;codecs=pcm',
+                    'audio/webm',
+                    'audio/ogg;codecs=opus',
+                    'audio/mp4'
+                ];
+
+                let result = '✅ MediaRecorder is available!\n\n';
+                result += 'Supported MIME types:\n';
+                
+                for (const type of mimeTypes) {
+                    const supported = MediaRecorder.isTypeSupported(type);
+                    result += `  ${supported ? '✅' : '❌'} ${type}\n`;
+                }
+
+                // Stop the stream
+                stream.getTracks().forEach(track => track.stop());
+                
+                testResultEl.textContent = result;
+                testResultEl.className = 'success';
+            } catch (err) {
+                testResultEl.textContent = `❌ Error: ${err.message}\n\n${err.stack}`;
+                testResultEl.className = 'error';
+            }
+        }
+
+        async function testAudioContext() {
+            testResultEl.textContent = 'Testing AudioContext...';
+            try {
+                const ctx = new AudioContext();
+                let result = '✅ AudioContext is available!\n\n';
+                result += `Sample Rate: ${ctx.sampleRate} Hz\n`;
+                result += `State: ${ctx.state}\n`;
+                result += `Base Latency: ${ctx.baseLatency}\n`;
+                
+                await ctx.close();
+                
+                testResultEl.textContent = result;
+                testResultEl.className = 'success';
+            } catch (err) {
+                testResultEl.textContent = `❌ Error: ${err.message}\n\n${err.stack}`;
+                testResultEl.className = 'error';
+            }
+        }
+
+        function checkAPI() {
+            apiResultEl.textContent = 'Checking window.api...';
+            try {
+                if (!window.api) {
+                    apiResultEl.textContent = '❌ window.api is not defined!\n\nThis means the preload script is not working.';
+                    apiResultEl.className = 'error';
+                    return;
+                }
+
+                let result = '✅ window.api exists!\n\nAvailable methods:\n';
+                for (const key in window.api) {
+                    result += `  - ${key} (${typeof window.api[key]})\n`;
+                }
+
+                apiResultEl.textContent = result;
+                apiResultEl.className = 'success';
+            } catch (err) {
+                apiResultEl.textContent = `❌ Error: ${err.message}\n\n${err.stack}`;
+                apiResultEl.className = 'error';
+            }
+        }
+
+        console.log('Diagnostic page loaded successfully');
+    </script>
+</body>
+</html>
+
