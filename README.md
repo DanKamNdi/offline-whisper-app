@@ -41,8 +41,8 @@ Download the latest version for your platform:
 
 ### Current Releases
 
-| Version | Date       | Platforms             | Notes |
-|---------|------------|-----------------------|-------|
+| Version | Date       | Platforms               | Notes                                                                                           |
+| ------- | ---------- | ----------------------- | ----------------------------------------------------------------------------------------------- |
 | v0.1.0  | 2025-01-XX | Windows / macOS / Linux | Initial public release with local recording, offline transcription, model manager, and history. |
 
 Grab installers from the [Releases page](https://github.com/DanKamNdi/offline-whisper-app/releases). New builds will be added to this table as they ship.
@@ -50,12 +50,14 @@ Grab installers from the [Releases page](https://github.com/DanKamNdi/offline-wh
 ### System Requirements
 
 **Minimum:**
+
 - RAM: 4 GB
 - CPU: Dual-core processor
 - Disk: 500 MB (app) + 75 MB - 3 GB (models)
 - OS: Windows 10+, macOS 10.13+, or modern Linux
 
 **Recommended for Best Experience:**
+
 - RAM: 8 GB+
 - CPU: Quad-core processor or better
 - GPU: 4 GB+ VRAM (NVIDIA, AMD, or Apple Silicon)
@@ -74,13 +76,13 @@ Grab installers from the [Releases page](https://github.com/DanKamNdi/offline-wh
 
 ### Supported Models
 
-| Model | Size | RAM Required | Transcription Speed | Accuracy |
-|-------|------|--------------|---------------------|----------|
-| tiny | ~75 MB | 4 GB | Fastest | Good |
-| base | ~142 MB | 4 GB | Very Fast | Better |
-| small | ~466 MB | 6 GB | Fast | Great |
-| medium | ~1.5 GB | 8 GB | Moderate | Excellent |
-| large-v3 | ~3 GB | 12 GB+ | Slower | Best |
+| Model    | Size    | RAM Required | Transcription Speed | Accuracy  |
+| -------- | ------- | ------------ | ------------------- | --------- |
+| tiny     | ~75 MB  | 4 GB         | Fastest             | Good      |
+| base     | ~142 MB | 4 GB         | Very Fast           | Better    |
+| small    | ~466 MB | 6 GB         | Fast                | Great     |
+| medium   | ~1.5 GB | 8 GB         | Moderate            | Excellent |
+| large-v3 | ~3 GB   | 12 GB+       | Slower              | Best      |
 
 > Models are quantized (Q5) for optimal size/quality balance
 
@@ -217,6 +219,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - ✅ Your audio and transcripts never leave your computer
 
 The only network requests are:
+
 - Initial download of whisper.cpp binaries (one-time)
 - Model downloads from HuggingFace (optional, on-demand)
 

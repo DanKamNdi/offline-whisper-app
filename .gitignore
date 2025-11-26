@@ -55,3 +55,5 @@ coverage/
 tmp/
 temp/
 *.tmp
+
+OPENSOURCE_CHECKLIST.md

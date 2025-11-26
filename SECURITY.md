@@ -16,7 +16,7 @@ The Offline Whisper team takes security bugs seriously. We appreciate your effor
 
 **Please do NOT report security vulnerabilities through public GitHub issues.**
 
-Instead, please report them via email to: **[SECURITY_EMAIL@example.com]**
+Instead, please report them via email to: **[ndirangualvinkamau@gmail.com]**
 
 Include the following information:
 
@@ -93,6 +93,7 @@ We follow a responsible disclosure model:
 ### Network Requests
 
 The app makes network requests only for:
+
 1. Downloading whisper.cpp binaries (one-time, on first run)
 2. Downloading Whisper models (on-demand, from HuggingFace)
 
@@ -126,7 +127,7 @@ Past security advisories will be published at:
 
 We thank the following people for responsibly disclosing security issues:
 
-- *[Your name could be here!]*
+- _[Your name could be here!]_
 
 ## Additional Resources
 
@@ -140,5 +141,4 @@ If you have questions about this policy, please open a [Discussion](https://gith
 
 ---
 
-*This security policy was last updated on January 2025.*
-
+_This security policy was last updated on January 2025._
