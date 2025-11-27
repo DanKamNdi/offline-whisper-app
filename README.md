@@ -63,6 +63,8 @@ Grab installers from the [Releases page](https://github.com/DanKamNdi/offline-wh
 - GPU: 4 GB+ VRAM (NVIDIA, AMD, or Apple Silicon)
 - Disk: 5 GB free space
 
+> On Windows, the installer automatically downloads and installs the Microsoft Visual C++ runtime if it is missing.
+
 ## 🚀 Getting Started
 
 ### First Run

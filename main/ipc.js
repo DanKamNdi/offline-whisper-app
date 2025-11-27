@@ -19,6 +19,7 @@ import {
   areBinariesInstalled,
 } from './binaryDownloader.js';
 import { runWhisper } from './whisperRunner.js';
+import { ensureVisualCRuntime } from './vcredist.js';
 import { loadConfig, saveConfig } from './config.js';
 import {
   loadHistory,
@@ -123,6 +124,12 @@ export function registerIpc(getWindow) {
     const { installed: binariesInstalled } = await areBinariesInstalled();
     if (!binariesInstalled) {
       throw new Error('Whisper binaries not installed. Please download them first.');
+    }
+
+    try {
+      await ensureVisualCRuntime();
+    } catch (err) {
+      throw new Error(`Failed to install Visual C++ dependencies: ${err.message}`);
     }
     
     const buffer = Buffer.from(audioData);

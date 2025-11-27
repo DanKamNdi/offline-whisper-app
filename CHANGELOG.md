@@ -14,11 +14,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Architecture documentation
 - Contributing guidelines
 - Code of Conduct
+- Automatic installation of the Microsoft Visual C++ runtime on Windows when it's missing
 
 ### Fixed
 - Audio decoding issue causing blank screen after recording stops
 - Changed audio codec priority to prefer Opus over PCM for better browser compatibility
 - Added 30-second timeout for audio decoding to prevent infinite hangs
+- Resolved whisper.cpp exit code `0xC0000135` by installing missing DLL dependencies automatically
 
 ## [0.1.0] - 2025-01-XX
 
